@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Stump: just a basic HTML page</title>
+    
+<script>
+/* give me a simple console.out for a var, tag */
+function clog(v, tag){
+    console.log(tag + ' (' + typeof(v) + ') :: ', v);
+}
+
+$(document).ready(function() { //when the page loads, launch the 
+    console.log("page ready!");
+});
+</script>
+<!-- local on/off switchs for dev -->
+<style>
+    div#main_content {
+        display: block;
+    }
+    
+</style>
+</head>
+<body>
+
+<div id="main_content">
+  <p>This is a stump webpage</p>
+</div><!--END: main_content -->
+    
+</body>
+<script>
+</script>
+
+</html>
