@@ -1,3 +1,5 @@
 #this file often starts out empty, but then fills up as the project progresses
 #web logs directory
 logs/
+#personal cdn for easy access
+localcdn/
