@@ -1,2 +1,2 @@
 # stump
-basics for quickly setting up shop
+Basics for quickly setting up shop.
