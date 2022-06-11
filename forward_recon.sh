@@ -2,13 +2,13 @@
 # blank script to gather creds and pull first content
 
 # default drop path
-github_repo_dest='.'
+github_repo_dest=''
 
 # I need the github user/account
 read -e -p "Provide the github account: " github_account
 read -e -p "Provide the github token: " github_token
 read -e -p "Provide the repo name: " github_reponame
-read -e -p "Provide the destination [.]: " github_repo_dest
+read -e -p "Provide the destination []: " github_repo_dest
 read -e -p "Provide the repo_dest_owner: " github_repo_dest_owner
 
 # if the dest owner user dne, exit
