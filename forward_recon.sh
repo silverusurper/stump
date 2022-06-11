@@ -1,33 +1,38 @@
 #!/bin/bash
-# blank script to gather creds and pull first content
 
-# defaults
+
+# github details
 github_account='no_account'
-github_repo_dest='' 
-github_repo_dest_owner="${USER}"
+github_reponame='no_reponame'
+read -e -p "Provide the github account [${github_account}]: " -i ${github_account} github_account
+read -e -p "Provide the repository name [${github_reponame}]: " -i ${github_reponame} github_reponame
 
-# I need the github user/account
-read -e -p "Provide the github account: " github_account
+
+# where does the content land? start with current dir plus repo
+github_repo_dest="${PWD}/${github_reponame}"
+read -e -p "Provide repo destination [${github_repo_dest}]: " -i ${github_repo_dest} github_repo_dest
+
+
+# now, ask for the token, do not echo the token
+github_token='no_token'
 read -s -p "Provide the github token: " github_token
-read -e -p "Provide the repo name: " github_reponame
-read -e -p "Provide the destination []: " github_repo_dest
-read -e -p "Provide the repo_dest_owner: " github_repo_dest_owner
-
-# if the dest owner user dne, exit
-[[ ! -d /home/${github_repo_dest_owner} ]] && echo "Destination owner does not exist..." && exit 42
+echo ""; echo "" # newlines
 
 
-# create the url
+# show me what we're working with, for debugging
+#echo "github account: ${github_account}"
+#echo "github reponame: ${github_reponame}"
+#echo "github repo dest: ${github_repo_dest}/${github_reponame}"
+
+
+# proceed, create the url
 github_url="https://${github_token}@github.com/${github_account}/${github_reponame}.git"
-echo "Github URL: ${github_url}"
+#echo "Github URL: ${github_url}"
 
 
-# use the big hammer (sudo), pull down the repo into the home dir
-sudo git clone ${github_url} ${github_repo_dest} && echo "The eagle has landed..." || exit 1
-
-# change the owhership of the repo content
-sudo chown -R ${github_repo_dest_owner}:${github_repo_dest_owner} ${github_repo_dest} || exit 2
+# pull down the repo
+git clone ${github_url} ${github_repo_dest} && echo 'The eagle has landed!' || exit 1
 
 
 # we all done here?
-echo "All done here boss..."
+echo -e '\nAll done here boss...'
